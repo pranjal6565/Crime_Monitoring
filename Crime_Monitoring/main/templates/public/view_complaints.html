@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container-fluid mt-5">
+    <h2 class="text-center text-danger">Your Complaints</h2>
+    <table class="table table-bordered mt-4">
+      <thead class="table-danger">
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>State</th>
+          <th>District</th>
+          <th>City</th>
+          <th>Pincode</th>
+          <th>Complaint</th>
+          <th>Submitted At</th>
+          <th>Actions</th>  <!-- Added column for delete button -->
+        </tr>
+      </thead>
+      <tbody>
+        {% for complaint in complaints %}
+          <tr>
+            <td>{{ complaint.name }}</td>
+            <td>{{ complaint.email }}</td>
+            <td>{{ complaint.state }}</td>
+            <td>{{ complaint.district }}</td>
+            <td>{{ complaint.city }}</td>
+            <td>{{ complaint.pincode }}</td>
+            <td>{{ complaint.complaint }}</td>
+            <td>{{ complaint.submitted_at }}</td>
+            <td>
+              <!-- Delete Button -->
+              <form action="{% url 'delete_complaint' complaint.id %}" method="POST" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+              </form>
+            </td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="9" class="text-center">No complaints found.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

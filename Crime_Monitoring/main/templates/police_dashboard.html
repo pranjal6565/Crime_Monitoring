@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container-fluid mt-4">
+  <div class="text-center mb-4">
+    <h1 class="fw-bold text-danger">👮 Police Officer Dashboard</h1>
+    <p class="fs-4 text-center">Welcome Officer <strong>{{ user.name }}</strong>! Manage crime reports efficiently.</p>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="d-flex justify-content-center flex-wrap mb-4">
+    <a href="{% url 'police_all_reports' %}" class="btn btn-outline-danger m-2 shadow-sm fs-5">
+      <i class="fas fa-hourglass-start fs-5 "></i> All Reports
+    </a>
+    <a href="{% url 'pending_reports' %}" class="btn btn-outline-warning m-2 shadow-sm fs-5">
+      <i class="fas fa-clock fs-5  "></i> Pending Cases
+    </a>
+    <a href="{% url 'in_progress_reports' %}" class="btn btn-outline-info m-2 shadow-sm fs-5">
+      <i class="fas fa-spinner fs-5 "></i> In Progress
+    </a>
+    <a href="{% url 'solved_reports' %}" class="btn btn-outline-success m-2 shadow-sm fs-5">
+      <i class="fas fa-check-circle fs-5 "></i> Solved Cases
+    </a>
+    <a href="{% url 'police_change_password' %}" class="btn btn-outline-secondary m-2 shadow-sm fs-5">
+    <i class="fas fa-key"></i> Change Password
+    </a>
+    <a href="{% url 'logout' %}" class="btn btn-outline-dark m-2 shadow-sm fs-5">
+      <i class="fas fa-sign-out-alt"></i>  Logout
+    </a>
+  </div>
+
+  <!-- Summary Cards -->
+  <div class="row justify-content-center g-4">
+    <div class="col-md-5">
+      <div class="card border-0 shadow-sm h-100" style="background-color: #fff3cd;">
+        <div class="card-body text-center">
+        <i class="fas fa-hourglass-start fa-2x text-warning mb-2"></i>
+          <h5 class="mt-2">Waiting</h5>
+          <p class="fs-4 fw-bold text-dark">{{ waiting_count }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <div class="card border-0 shadow-sm h-100" style="background-color: #ffe8cc;">
+        <div class="card-body text-center">
+            <i class="fas fa-clock fa-2x text-warning mb-2"></i>
+          <h5 class="mt-2">Pending</h5>
+          <p class="fs-4 fw-bold text-dark">{{ pending_count }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center g-4 mt-1">
+    <div class="col-md-5">
+      <div class="card border-0 shadow-sm h-100" style="background-color: #d1ecf1;">
+        <div class="card-body text-center ">
+           <i class="fas fa-spinner fa-2x text-info mb-2"></i>
+          <h5 class="mt-2">In Progress</h5>
+          <p class="fs-4 fw-bold text-dark">{{ in_progress_count }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <div class="card border-0 shadow-sm h-100" style="background-color: #d4edda;">
+        <div class="card-body text-center ">
+          <i class="fas fa-check-circle fa-2x text-success mb-2"></i>
+          <h5 class="mt-2">Solved</h5>
+          <p class="fs-4 fw-bold text-dark">{{ solved_count }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container-fluid mt-5">
+  <div class="text-center mb-5">
+    <h1 class="text-danger fw-bold dashboard-heading fs-1 ">🚨 Admin Dashboard</h1>
+    <p class="lead text-muted dashboard-sub fs-4">Welcome Admin <strong>{{ user.username }}</strong>! Manage system settings and users.</p>
+
+    <!-- Outline Buttons -->
+    <a href="{% url 'add_police' %}" class="btn btn-outline-info mx-3 fs-5"><i class="fas fa-user-plus"></i> Add Officers</a>
+    <a href="{% url 'view_officers' %}" class="btn btn-outline-dark mx-3 fs-5"><i class="fas fa-users"></i> View Officers</a>
+    <a href="{% url 'view_public_users' %}" class="btn btn-outline-secondary mx-3 fs-5"><i class="fas fa-users-rectangle"></i> View Public</a>
+    <a href="{% url 'admin_complaints' %}" class="btn btn-outline-danger mx-3 m-1 fs-5"><i class="fas fa-comments"></i> View Complaints</a>
+    <!-- Add this below the Logout button -->
+<a href="{% url 'change_admin_credentials' %}" class="btn btn-outline-warning mx-3 fs-5">
+  <i class="fas fa-user-cog"></i> Change Username / Password
+</a>
+
+    <a href="{% url 'logout' %}" class="btn btn-outline-danger mx-3 fs-5"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  </div>
+
+  <!-- 4 Cards per Row Layout -->
+  <div class="row g-3 mb-5">
+    <div class="col-md-3">
+      <div class="card shadow-sm h-100" style="background: #e9f5ff;">
+        <div class="card-body text-center">
+          <i class="fas fa-users text-primary"></i>
+          <h5>Total Users</h5>
+          <h3 class="text-dark">{{ total_users }}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card shadow-sm h-100" style="background: #e3f2fd;">
+        <div class="card-body text-center">
+          <i class="fas fa-user-shield text-info"></i>
+          <h5>Total Police</h5>
+          <h3 class="text-dark">{{ total_police }}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card shadow-sm h-100" style="background: #f1f3f5;">
+        <div class="card-body text-center">
+          <i class="fas fa-user text-secondary"></i>
+          <h5>Total Public</h5>
+          <h3 class="text-dark">{{ total_public }}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card shadow-sm h-100" style="background: #ffe6e6;">
+        <div class="card-body text-center">
+          <i class="fas fa-envelope text-danger"></i>
+          <h5>Total Complaints</h5>
+          <h3 class="text-dark">{{ total_complaints }}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-3 mb-2">
+    <div class="col-md-3">
+      <div class="card shadow-sm h-100" style="background: #fff3cd;">
+        <div class="card-body text-center">
+          <i class="fas fa-hourglass-start text-warning"></i>
+          <h5>Waiting Cases</h5>
+          <h3 class="text-dark">{{ waiting_cases }}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card shadow-sm h-100" style="background: #ffe8cc;">
+        <div class="card-body text-center">
+          <i class="fas fa-clock text-orange"></i>
+          <h5>Pending Cases</h5>
+          <h3 class="text-dark">{{ pending_cases }}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card shadow-sm h-100" style="background: #e5dbff;">
+        <div class="card-body text-center">
+          <i class="fas fa-spinner text-purple"></i>
+          <h5>Progress Cases</h5>
+          <h3 class="text-dark">{{ progress_cases }}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card shadow-sm h-100" style="background: #d3f9d8;">
+        <div class="card-body text-center">
+          <i class="fas fa-check-circle text-success"></i>
+          <h5>Solved Cases</h5>
+          <h3 class="text-dark">{{ solved_cases }}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

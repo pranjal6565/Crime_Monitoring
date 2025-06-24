@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <h3 class="text-center text-danger mb-4"><i class="bi bi-chat-left-text-fill"></i> Contact Us - Complaint Form</h3>
+
+  <div class="card p-4 shadow">
+    <form method="POST">
+      {% csrf_token %}
+      <div class="row">
+
+        <!-- Column 1 -->
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label for="id_name" class="form-label">Name:</label>
+            <input type="text" name="name" id="id_name" class="form-control" value="{{ form.name.value }}">
+          </div>
+          <div class="mb-3">
+            <label for="id_contact_no" class="form-label">Contact Number:</label>
+            <input type="text" name="contact_no" id="id_contact_no" class="form-control" value="{{ form.contact_no.value }}">
+          </div>
+          <div class="mb-3">
+            <label for="id_email" class="form-label">Email:</label>
+            <input type="email" name="email" id="id_email" class="form-control" value="{{ form.email.value }}">
+          </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label for="id_state" class="form-label">State:</label>
+            <input type="text" name="state" id="id_state" class="form-control" value="{{ form.state.value }}">
+          </div>
+          <div class="mb-3">
+            <label for="id_district" class="form-label">District:</label>
+            <input type="text" name="district" id="id_district" class="form-control" value="{{ form.district.value }}">
+          </div>
+          <div class="mb-3">
+            <label for="id_village" class="form-label">Village:</label>
+            <input type="text" name="village" id="id_village" class="form-control" value="{{ form.village.value }}">
+          </div>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label for="id_city" class="form-label">City:</label>
+            <input type="text" name="city" id="id_city" class="form-control" value="{{ form.city.value }}">
+          </div>
+          <div class="mb-3">
+            <label for="id_pincode" class="form-label">Pincode:</label>
+            <input type="text" name="pincode" id="id_pincode" class="form-control" value="{{ form.pincode.value }}">
+          </div>
+          <div class="mb-3">
+            <label for="id_complaint" class="form-label">Complaint Details:</label>
+            <textarea name="complaint" id="id_complaint" rows="5" class="form-control" placeholder="Describe your complaint">{{ form.complaint.value }}</textarea>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="text-center mt-3">
+        <button type="submit" class="btn btn-danger px-5">
+          <i class="bi bi-send-fill"></i> Submit Complaint
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

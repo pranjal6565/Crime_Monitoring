@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid mt-4">
+    <h2 class="mb-4">
+        <i class="bi bi-clipboard-data-fill text-danger"></i>
+        <strong>All Reports - Status:</strong> 
+        <span class="text-danger">Waiting</span>
+    </h2>
+
+    {% if reports %}
+    <div class="table-responsive rounded shadow">
+        <table class="table table-bordered table-hover" style="background-color: #fff;">
+            <thead style="background-color: #dc3545; color: white;">
+                <tr>
+                    <th>#</th>
+                    <th>Reporter</th>
+                    <th>Contact</th>
+                    <th>State</th>
+                    <th>District</th>
+                    <th>City/Village</th>
+                    <th>Pincode</th>
+                    <th>Description</th>
+                    <th>Crime Location</th>
+                    <th>Crime Date/Time</th>
+                    <th>Evidence</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for report in reports %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ report.name }}</td>
+                    <td>{{ report.contact_no }}</td>
+                    <td>{{ report.state }}</td>
+                    <td>{{ report.district }}</td>
+                    <td>{{ report.city }}</td>
+                    <td>{{ report.pincode }}</td>
+                    <td>{{ report.description }}</td>
+                    <td>{{ report.crime_location }}</td>
+                    <td>{{ report.crime_date }}<br>{{ report.crime_time }}</td>
+                    <td>
+                        {% if report.evidence_file %}
+                            <a href="{{ report.evidence_file.url }}" target="_blank" class="btn btn-sm btn-outline-danger">View</a>
+                        {% else %}
+                            <span class="text-muted">No file</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <span class="badge bg-secondary text-uppercase">{{ report.status }}</span>
+                    </td>
+                    <td>
+                        <a href="{% url 'update_status' report.id %}" class="btn btn-sm" style="background-color: #ffc107; color: #000;">Take Action</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="alert alert-dark text-center">
+        <strong>No waiting reports found for your area.</strong>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

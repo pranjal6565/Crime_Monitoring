@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="container py-5">
+    <h2 class="text-center mb-5 display-5 text-danger">Your Safety Matters</h2>
+
+    <div class="row g-5">
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-danger">1. Stay Alert</h5>
+                    <p class="card-text">Be aware of your surroundings at all times, especially in unfamiliar or poorly lit areas.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-danger">2. Use Verified Transport</h5>
+                    <p class="card-text">Always use trusted and verified transport options, especially when traveling alone.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-danger">3. Emergency Contacts</h5>
+                    <p class="card-text">Keep emergency numbers saved and easily accessible on your phone and wallet.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-danger">4. Report Suspicious Activity</h5>
+                    <p class="card-text">Don't hesitate to report anything unusual or suspicious using our crime report section.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-danger">5. Stay Connected</h5>
+                    <p class="card-text">Share your live location with trusted friends or family when traveling alone at night.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-danger">6. Be Smart Online</h5>
+                    <p class="card-text">Never share personal or sensitive data with unverified websites or unknown contacts.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="custom-footer">
+    <div class="container">
+        <div class="row">
+            <!-- 🔗 Quick Links -->
+            <div class="col-md-4 footer-column">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'safety_tips' %}">Safety Tips</a></li>
+                    <li><a href="{% url 'contect_us' %}">Contact Us</a></li>
+                    <li><a href="{% url 'about_us' %}">About Us</a></li>
+                </ul>
+            </div>
+
+            <!-- 📍 Contact Info -->
+            <div class="col-md-4 footer-column">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-phone-alt"></i> +91 7398572578</p>
+                <p><i class="fas fa-envelope"></i> pranjalchaurasiya495@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i>Mirzapur, Uttar Pradesh</p>
+            </div>
+
+            <!--  Social Media -->
+            <div class="col-md-4 footer-column">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/"><i class="fab fa-facebook-f text-white"></i></a>
+                    <a href="#"><i class="fab fa-twitter text-white"></i></a>
+                    <a href="https://www.instagram.com/"><i class="fab fa-instagram text-white"></i></a>
+                    <a href="https://www.linkedin.com/feed/"><i class="fab fa-linkedin-in text-white"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- 🚀 Copyright -->
+        <div class="footer-bottom">
+            <p>© 2025 Crime Monitoring System | All Rights Reserved</p>
+        </div>
+    </div>
+</footer>
+
+{% endblock %}

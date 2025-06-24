@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid mt-5">
+    <div class="card shadow border-0">
+        
+            <h4 class="mb-0 text-center">📊 Public Users Report Summary</h4>
+
+        <div class="card-body">
+            {% if data %}
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover align-middle text-center">
+                    <thead class="table-danger">
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Total Reports</th>
+                            <th>Solved Reports</th>
+                            <th>Report Destination Details</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in data %}
+                        <tr>
+                            <td>{{ item.user.username }}</td>
+                            <td>{{ item.email }}</td>
+                            <td><span class="badge bg-warning text-dark">{{ item.total_reports }}</span></td>
+                            <td><span class="badge bg-success">{{ item.solved_reports }}</span></td>
+                            <td class="text-start">
+                                <ul class="list-unstyled mb-0">
+                                    {% for rpt in item.report_destinations %}
+                                    <li class="mb-2 p-2 border rounded bg-light">
+                                        <p class="mb-1"><strong>Pincode:</strong> {{ rpt.pincode }}</p>
+                                        <p class="mb-1"><strong>Assigned Police:</strong> {{ rpt.assigned_to }}</p>
+                                        <p class="mb-1"><strong>Station:</strong> {{ rpt.station }}</p>
+                                        <p class="mb-1">
+                                            <strong>City:</strong> {{ rpt.city }}, 
+                                            <strong>District:</strong> {{ rpt.district }}, 
+                                            <strong>State:</strong> {{ rpt.state }}
+                                        </p>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                            <td>
+                                <form action="{% url 'delete_public_user' item.user.id %}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?');">
+                                    {% csrf_token %}
+                                    <button class="btn btn-sm btn-outline-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <p class="text-muted">No public users found.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-danger">Thank You!</h2>
+  <p class="lead">Your complaint has been submitted successfully. Admin will review it soon.</p>
+  <a href="{% url 'public_dashboard' %}" class="btn btn-primary">Back to Dashboard</a>
+</div>
+{% endblock %}

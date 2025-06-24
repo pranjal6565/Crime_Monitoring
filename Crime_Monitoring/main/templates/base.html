@@ -1,0 +1,362 @@
+<!-- templates/base/base.html -->
+ {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crime Monitoring System</title>
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        body {
+  padding-top: 80px;  /* Navbar height ke according */
+   /* Footer space */
+}
+
+
+/* Navbar Customization */
+/* 🌟 Navbar Styling */
+.navbar {
+    background: linear-gradient(45deg, #dc3545, #9b0b17);
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: 0.3s ease-in-out;
+}
+
+.navbar-brand {
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.navbar-nav .nav-link {
+    color: white;
+    font-size: 1.2rem;
+    margin-right: 20px;
+    transition: 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+    color: yellow;
+    transform: scale(1.1);
+}
+
+.btn-login {
+    background: white;
+    color: #dc3545 !important;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+}
+
+.btn-login:hover {
+    background: yellow;
+    color: black !important;
+}
+
+
+
+
+
+/* 🌟 Hero Section Styling */
+.hero-section {
+    background: linear-gradient(120deg, #dc3545, #9b0b17);
+    color: white;
+    padding: 120px 0;
+    text-align: left;
+    position: relative;
+    /* 🛠 Navbar Overlapping Issue Fix */
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.btn-report {
+    background: yellow;
+    color: black;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+}
+
+.btn-report:hover {
+    background: white;
+    color: #dc3545;
+    transform: scale(1.1);
+}
+
+.hero-img {
+    width: 80%;
+    max-width: 500px;
+    animation: floatImage 3s infinite alternate;
+}
+
+/* Floating Animation */
+@keyframes floatImage {
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+
+/* 🌟 Section Styling */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #dc3545;
+    margin-bottom: 15px;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+/* 🚀 How It Works Section */
+.how-it-works {
+    background: #f8f9fa;
+    padding: 60px 0;
+}
+
+.work-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+.work-card:hover {
+    transform: scale(1.05);
+}
+
+.work-icon {
+    width: 80px;
+    margin-bottom: 15px;
+}
+
+/* 🛡️ Safety Tips Section */
+.safety-tips {
+    background: #fff;
+    padding: 60px 0;
+}
+
+.tips-list {
+    list-style: none;
+    padding: 0;
+}
+
+.tips-list li {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    padding-left: 30px;
+    position: relative;
+}
+
+.tips-list li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: #dc3545;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.safety-img {
+    width: 90%;
+    max-width: 400px;
+}
+
+
+/* Footer */
+/* 🌟 Footer Styling */
+.custom-footer {
+    background: #333;
+    color: white;
+    padding: 50px 0;
+    font-family: Arial, sans-serif;
+}
+
+.footer-column h4 {
+    color: #dc3545;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 8px;
+}
+
+.footer-links a {
+    color: #bbb;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+.footer-column p {
+    margin: 8px 0;
+    font-size: 1rem;
+}
+
+.footer-column i {
+    margin-right: 10px;
+    color: #dc3545;
+}
+
+/* 🔥 Social Media Icons */
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    width: 40px;
+    height: 40px;
+    background: #dc3545;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    transition: 0.3s;
+    text-decoration: none;
+    text-align: center;
+}
+
+/* 🚀 Copyright Styling */
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #555;
+    font-size: 0.9rem;
+}
+
+.card {
+  border-radius: 20px;
+  background-color: #ffffff;
+}
+
+form input {
+  border-radius: 10px;
+}
+
+
+
+
+.table th, .table td {
+    vertical-align: middle;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f8d7da;
+}
+
+.badge {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+}
+
+
+    </style>
+</head>
+<body>
+    {% if messages %}
+    <div class="container mt-3">
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+    <!-- 🌟 Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand fs-5" href="{% url 'home' %}">🚔 Crime Monitor</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                   
+                    <li class="nav-item"><a class="nav-link" href="{% url 'safety_tips' %}">Safety Tips</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'about_us' %}">About Us</a></li>
+                    
+                 {% if user.is_authenticated %}
+    {% if user.is_superuser %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'admin_dashboard' %}">Dashboard</a>
+        </li>
+    {% elif user.profile.user_type == 'public' %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'public_dashboard' %}">Dashboard</a>
+        </li>
+    {% else %}
+        {% if user.policeprofile %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'police_dashboard' %}">Dashboard</a>
+            </li>
+        {% endif %}
+    {% endif %}
+
+    <li class="nav-item">
+        <a class="nav-link btn-login" href="{% url 'logout' %}">Logout</a>
+    </li>
+{% else %}
+    <li class="nav-item"><a class="nav-link btn-login" href="{% url 'login' %}">Login</a></li>
+    <li class="nav-item"><a class="nav-link btn-login" href="{% url 'signup' %}">Signup</a></li>
+{% endif %}
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    {% block content %}
+    {% endblock %}
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

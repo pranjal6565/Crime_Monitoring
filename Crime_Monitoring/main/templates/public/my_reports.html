@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid mt-5">
+  <h2 class="text-center mb-4 text-danger">My Crime Reports</h2>
+
+  
+
+  {% if reports %}
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead class="table-danger">
+        <tr>
+          <th>Sr.no.</th>
+          <th>Name</th>
+          <th>Username</th>
+          <th>Contact</th>
+          <th>Email</th>
+          <th>State</th>
+          <th>District</th>
+          <th>City</th>
+          <th>Police Station</th>
+          <th>Officer Username</th>
+          <th>Officer Name</th>
+
+          <th>Pincode</th>
+          <th>Crime Location</th>
+          <th>Description</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Evidence</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for report in reports %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ report.name }}</td>
+          <td>{{ report.reporter.username }}</td>
+          <td>{{ report.contact_no }}</td>
+          <td>{{ report.email }}</td>
+          <td>{{ report.state }}</td>
+          <td>{{ report.district }}</td>
+          <td>{{ report.city }}</td>
+          <td>{{ report.police_station }}</td>
+          <td>{{ report.officer_username }}</td>
+          <td>{{ report.officer_name }}</td>
+          <td>{{ report.pincode }}</td>
+          <td>{{ report.crime_location }}</td>
+          <td>{{ report.description }}</td>
+          <td>{{ report.crime_date }}</td>
+          <td>{{ report.crime_time }}</td>
+          <td>
+            {% if report.evidence_file %}
+              <a href="{{ report.evidence_file.url }}" target="_blank">View</a>
+            {% else %}
+              None
+            {% endif %}
+          </td>
+          <td>
+            <span class="badge 
+              {% if report.status == 'waiting' %} bg-warning 
+              {% elif report.status == 'pending' %} bg-danger 
+              {% elif report.status == 'in_progress' %} bg-info 
+              {% elif report.status == 'solved' %} bg-success 
+              {% endif %}">
+              {{ report.status|title }}
+            </span>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+    <div class="alert alert-info">No reports found.</div>
+  {% endif %}
+</div>
+{% endblock %}

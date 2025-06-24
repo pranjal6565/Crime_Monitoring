@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="py-5" style="background-color: #f8f9fa;">
+  <div class="container-fluid px-5">
+    <div class="row align-items-center">
+
+      <!-- Content Section -->
+      <div class="col-md-6 mb-4 mb-md-0">
+        <h2 class="mb-4 text-danger fw-bold" style="font-size: 36px;">About <span class="text-dark">Us</span></h2>
+        <p style="font-size: 17px; line-height: 1.8; text-align: justify;">
+          Welcome to the Real-Time Crime Monitoring System — a digital solution designed to enhance public safety, streamline law enforcement communication, and empower citizens.
+        </p>
+        <p style="font-size: 17px; line-height: 1.8; text-align: justify;">
+          Our platform serves as a bridge between the general public, the police, and the administrative authorities. It allows users to instantly report crimes or suspicious activities, upload evidence, and receive timely updates on the status of their reports.
+        </p>
+        <p style="font-size: 17px; line-height: 1.8; text-align: justify;">
+          Designed with modern web technologies and a user-centric approach, this system ensures transparency, quick response, and accountability. Each user type — whether a citizen, a police officer, or an administrator — has dedicated access with personalized features.
+        </p>
+        <p style="font-size: 17px; line-height: 1.8; text-align: justify;">
+          Our mission is to foster a safer and smarter society by utilizing the power of real-time technology and collaborative governance. We believe that when technology meets transparency, trust and security follow.
+        </p>
+        <p style="font-size: 17px; line-height: 1.8; text-align: justify;">
+          Join us in our initiative to create a secure environment for all — where every voice is heard, and every action is recorded.
+        </p>
+      </div>
+
+      <!-- Image Section -->
+      <div class="col-md-6">
+        <img src="{% static 'images/about.jpg' %}" alt="About us" class="img-fluid rounded-4 shadow-lg">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<footer class="custom-footer">
+    <div class="container">
+        <div class="row">
+            <!-- 🔗 Quick Links -->
+            <div class="col-md-4 footer-column">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'safety_tips' %}">Safety Tips</a></li>
+                    <li><a href="{% url 'contect_us' %}">Contact Us</a></li>
+                    <li><a href="{% url 'about_us' %}">About Us</a></li>
+                </ul>
+            </div>
+
+            <!-- 📍 Contact Info -->
+            <div class="col-md-4 footer-column">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-phone-alt"></i> +91 7398572578</p>
+                <p><i class="fas fa-envelope"></i> pranjalchaurasiya495@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i>Mirzapur, Uttar Pradesh</p>
+            </div>
+
+            <!--  Social Media -->
+            <div class="col-md-4 footer-column">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/"><i class="fab fa-facebook-f text-white"></i></a>
+                    <a href="#"><i class="fab fa-twitter text-white"></i></a>
+                    <a href="https://www.instagram.com/"><i class="fab fa-instagram text-white"></i></a>
+                    <a href="https://www.linkedin.com/feed/"><i class="fab fa-linkedin-in text-white"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- 🚀 Copyright -->
+        <div class="footer-bottom">
+            <p>© 2025 Crime Monitoring System | All Rights Reserved</p>
+        </div>
+    </div>
+</footer>
+
+{% endblock %}

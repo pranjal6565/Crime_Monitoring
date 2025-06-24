@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid mt-4">
+    <h2 class="mb-4">
+        <i class="bi bi-person-lines-fill text-danger"></i>
+        <strong>In Progress Reports</strong>
+    </h2>
+
+    {% if reports %}
+    <div class="table-responsive shadow-sm rounded">
+        <table class="table table-bordered table-hover bg-white">
+            <thead style="background-color: #dc3545; color: white;">
+                <tr>
+                    <th>Sr. No.</th>
+                    <th>Reporter</th>
+                    <th>Contact No.</th>
+                    <th>Description</th>
+                    <th>Crime Location</th>
+                    <th>State</th>
+                    <th>District</th>
+                    <th>City/Village</th>
+                    <th>Pincode</th>
+                    <th>Evidence</th>
+                    <th>Date/Time</th>
+                    <th>Status</th>
+                    <th>Notes</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for report in reports %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ report.name }}</td>
+                    <td>{{ report.contact_no }}</td>
+                    <td>{{ report.description }}</td>
+                    <td>{{ report.crime_location }}</td>
+                    <td>{{ report.state }}</td>
+                    <td>{{ report.district }}</td>
+                    <td>{{ report.city }}</td>
+                    <td>{{ report.pincode }}</td>
+                    <td>
+                        {% if report.evidence_file %}
+                            <a href="{{ report.evidence_file.url }}" target="_blank" class="btn btn-sm btn-outline-danger">View</a>
+                        {% else %}
+                            <span class="text-muted">No file</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ report.crime_date }}<br>{{ report.crime_time }}</td>
+                    <td>
+                        <span class="badge bg-secondary text-uppercase">{{ report.status }}</span>
+                    </td>
+                    <td>{{ report.investigation_notes }}</td>
+                    <td>
+                        <a href="{% url 'update_status' report.id %}" class="btn btn-sm btn-success">Mark as Solved</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="alert alert-dark text-center">
+        <strong>No in-progress reports found.</strong>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
